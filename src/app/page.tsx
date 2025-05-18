@@ -1,7 +1,5 @@
 'use client'
 
-import { Chessboard } from "react-chessboard-expandable";
-
 export default function Home() {
   return (
     <main className="flex items-center justify-center h-screen w-screen">
