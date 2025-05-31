@@ -15,8 +15,8 @@ importers:
         specifier: ^1.9.0
         version: 1.9.0
       chessjs-expandable:
-        specifier: ^0.0.9
-        version: 0.0.9
+        specifier: ^0.0.10
+        version: 0.0.10
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -388,11 +388,11 @@ packages:
   caniuse-lite@1.0.30001709:
     resolution: {integrity: sha512-NgL3vUTnDrPCZ3zTahp4fsugQ4dc7EKTSzwQDPEel6DMoMnfH2jhry9n2Zm8onbSR+f/QtKHFOA+iAQu4kbtWA==}
 
+  chessjs-expandable@0.0.10:
+    resolution: {integrity: sha512-61j/C3O1xBk6kxm7BtXTRrpQ71nde505AostZpEo/ml07ShdPzMmSe+wkDCHcQtI2vMJntUyhBOVBcFC7J399A==}
+
   chessjs-expandable@0.0.7:
     resolution: {integrity: sha512-ldvG0Po4q4OKyJOydXGOJzVJZRZb2dbuljU3QxMp0Udbyi7u8uDuzrhqTdttBY/s6aCPkezicwBM1j7jpciLjw==}
-
-  chessjs-expandable@0.0.9:
-    resolution: {integrity: sha512-402IQwq5zxOc5jCsYs5dub4m+x5KpXiCT4YoA6VLamnpiki9P6jlfDTwCwOxoOQlSKr0rj9fjDJc5RS8g2BR5w==}
 
   class-variance-authority@0.7.1:
     resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
@@ -1055,9 +1055,9 @@ snapshots:
 
   caniuse-lite@1.0.30001709: {}
 
-  chessjs-expandable@0.0.7: {}
+  chessjs-expandable@0.0.10: {}
 
-  chessjs-expandable@0.0.9: {}
+  chessjs-expandable@0.0.7: {}
 
   class-variance-authority@0.7.1:
     dependencies:
