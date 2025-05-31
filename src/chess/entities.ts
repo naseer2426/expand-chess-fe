@@ -1,19 +1,16 @@
-
 import { GameStatus } from 'chessjs-expandable';
 
-export const GameStatusNotStarted = 'NOT_STARTED'
+export const GameStatusNotStarted = 'NOT_STARTED';
 
 // not started is only something I need to worry about in the backend so I am not adding it in the chessjs-expandable package
-export type BackendGameStatus = GameStatus | 'NOT_STARTED' 
+export type BackendGameStatus = GameStatus | 'NOT_STARTED';
 
-
-
-export type ExtendConfig ={
-    horizontalAddUnit: {x:number, y:number}
-    verticalAddUnit: {x:number, y:number}
-    horizontalExtendLimit: number
-    verticalExtendLimit: number
-}
+export type ExtendConfig = {
+    horizontalAddUnit: { x: number; y: number };
+    verticalAddUnit: { x: number; y: number };
+    horizontalExtendLimit: number;
+    verticalExtendLimit: number;
+};
 
 export enum GameType {
     OPEN = 'OPEN',
@@ -37,10 +34,10 @@ export type Game = {
     startTime?: number;
     extendConfig: ExtendConfig;
     moveDetails: MoveDetail[];
-}
+};
 
 export type SyncMove = {
     move: string;
     gameId: string;
     moveNumber: number;
-  };
+};
