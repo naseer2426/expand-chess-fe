@@ -81,7 +81,6 @@ export default function GamePage() {
         }
     }, [chess])
 
-
     if (message) {
         return (
             <div className="flex items-center justify-center h-screen w-screen">
