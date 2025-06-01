@@ -15,6 +15,12 @@ import { useParams } from 'next/navigation';
 import { JoinGame, SyncGame } from '@/socket/types';
 import { toast } from 'sonner';
 import { Game, GameStatusNotStarted, SyncMove } from '@/chess/entities';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogTitle,
+} from "@/components/ui/dialog"
 
 type ClientInfo = {
     color: 'white' | 'black';
@@ -36,6 +42,7 @@ export default function GamePage() {
         type: 'spectator',
         color: 'white',
     });
+    const [dialogOpen, setDaialogOpen] = useState<boolean>(false)
 
     const params = useParams();
     const [message, setMessage] = useState<string>('connecting...');
@@ -46,14 +53,12 @@ export default function GamePage() {
     useEffect(() => {
         socket.connect();
         const onConnect = () => {
-            console.log(EVENT_CONNECT);
             socket.emit(EVENT_JOIN_GAME, {
                 clientId: deviceId,
                 gameId,
             } as JoinGame);
         };
         const onSync = (resp: SyncGame) => {
-            console.log(EVENT_SYNC_GAME);
             // TODO: handle this in a more design pretty way
             if (resp.error != null) {
                 toast(resp.error);
@@ -64,8 +69,9 @@ export default function GamePage() {
                 resp.game.gameStatus != GameStatusNotStarted &&
                 resp.game.gameStatus != GameStatus.IN_PROGRESS
             ) {
-                setMessage(resp.game.gameStatus);
-                return;
+                console.log(resp.game.gameStatus)
+                setMessage("");
+                setDaialogOpen(true);
             }
             setGame(resp.game);
             setChess(
@@ -124,6 +130,9 @@ export default function GamePage() {
                         if (chess.getTurn() !== clientInfo.color) {
                             return false;
                         }
+                        if (game.gameStatus != GameStatus.IN_PROGRESS) {
+                            return false;
+                        }
                         const chessCopy = chess.new();
                         const valid = chessCopy.moveFromBoard({
                             moveType: move.type,
@@ -156,6 +165,16 @@ export default function GamePage() {
                     verticalExtendLimit={2}
                 />
             </div>
+            <Dialog open={dialogOpen} onOpenChange={(open) => { setDaialogOpen(open) }}>
+                <DialogContent>
+                    <DialogTitle>Game Over</DialogTitle>
+                    <DialogDescription>
+                        {game?.gameStatus === GameStatus.BLACK_WON && "Black Won"}
+                        {game?.gameStatus === GameStatus.WHITE_WON && "White Won"}
+                        {game?.gameStatus === GameStatus.DRAW && "Draw"}
+                    </DialogDescription>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
