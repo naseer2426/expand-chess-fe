@@ -37,7 +37,7 @@ export default function Home() {
     return (
         <main className="flex flex-col gap-5 items-center justify-center h-screen w-screen">
             <h1>{loading ? "Creating new game..." : "Expandable Chess"}</h1>
-            <Button onClick={onClick} disabled={loading}>Create Game</Button>
+            <Button onClick={onClick} disabled={loading} className={"bg-[#006400]"}>Create Game</Button>
         </main>
     );
 }
