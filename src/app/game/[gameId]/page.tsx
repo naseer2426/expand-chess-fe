@@ -115,7 +115,7 @@ export default function GamePage() {
     }
     return (
         <div className="flex items-center justify-center h-screen w-screen">
-            <div className="flex w-1/2 p-10">
+            <div className="flex w-1/3 p-10">
                 <Chessboard
                     id="defaultBoard"
                     boardOrientation={clientInfo.color}
